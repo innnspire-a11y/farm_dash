@@ -11,6 +11,21 @@ import altair as alt
 import json
 import math
 
+# --- 0. Page Configuration & UI Cleanup ---
+st.set_page_config(layout="wide", page_title="Digital Twin")
+
+# Custom CSS to hide the GitHub icon, Deploy button, and footer
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            .stAppDeployButton {display:none !important;}
+            div[data-testid="stToolbar"] {display: none !important;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # --- 1. SECURITY CHECK ---
 def check_password():
     def password_entered():
@@ -339,3 +354,4 @@ elif page == "⚙️ Manage Inventory":
         st.success("Database updated!")
         st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
+
